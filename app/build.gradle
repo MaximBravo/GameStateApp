@@ -11,10 +11,29 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+    signingConfigs {
+        release {
+            storeFile file("C:/Users/Maxim Bravo/keystores/android.jks")
+            storePassword "maximkeystore"
+            keyAlias "androidkey"
+            keyPassword "maximkey"
+        }
+        debug {
+            storeFile file("C:/Users/Maxim Bravo/keystores/android.jks")
+            storePassword "maximkeystore"
+            keyAlias "androidkey"
+            keyPassword "maximkey"
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.debug
         }
     }
 }
